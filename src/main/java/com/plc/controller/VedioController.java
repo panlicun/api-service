@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.plc.model.User;
 import com.plc.model.Vedio;
 import com.plc.service.VedioService;
 import com.plc.util.ErrMsg;
@@ -121,6 +122,7 @@ public class VedioController {
 	@RequestMapping(value = "/findTop20ByPlayTimes", method = RequestMethod.POST)
 	public Object findTop20ByPlayTimes(HttpServletRequest request, HttpServletResponse response) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
+		User user = (User)request.getSession().getAttribute("user");
 		List<Vedio> vedioList = vedioService.findTop20ByPlayTimes();
 		if (null != vedioList && !vedioList.isEmpty()) {
 			errMsg.setData(vedioList);
