@@ -6,6 +6,8 @@ import com.plc.model.Vedio;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.transaction.Transactional;
+
 public interface VedioService {
 	Vedio save(Vedio vedio);
 	
@@ -28,5 +30,7 @@ public interface VedioService {
 	Page<Vedio> findByVedioNameLike(String vedioName, Pageable pageable);
 
 	Long countByVedioNameLike(String vedioName);
+
+	void test();
 
 }

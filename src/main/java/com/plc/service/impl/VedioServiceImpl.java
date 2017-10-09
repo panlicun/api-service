@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service("VedioService")
 public class VedioServiceImpl implements VedioService {
 	// Log
@@ -78,5 +80,24 @@ public class VedioServiceImpl implements VedioService {
 	public Long countByVedioNameLike(String vedioName) {
 		return vedioRepository.countByVedioNameLike(vedioName);
 	}
+
+    @Override
+    @Transactional
+	public void test(){
+        Vedio vedio = new Vedio();
+        vedio.setVedioName("test1");
+        vedio.setVedioTypeId(1L);
+        vedio.setVedioTypeName("test1");
+        vedioRepository.save(vedio);
+        Vedio vedio1 = new Vedio();
+        vedio1.setVedioName("test2");
+        vedio1.setVedioTypeName("test2");
+        vedioRepository.save(vedio1);
+        Vedio vedio2 = new Vedio();
+        vedio2.setVedioName("test3");
+        vedio2.setVedioTypeId(1L);
+        vedio2.setVedioTypeName("test3");
+        vedioRepository.save(vedio2);
+    }
 
 }

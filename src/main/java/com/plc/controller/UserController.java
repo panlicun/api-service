@@ -9,15 +9,12 @@ import com.plc.service.UserService;
 import com.plc.util.MD5Util;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.plc.util.ErrMsg;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 	// Log
 	private final Logger log = Logger.getLogger(this.getClass());
@@ -26,8 +23,8 @@ public class UserController {
 	private UserService userService;
 
 	@ResponseBody
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public Object index(HttpServletRequest request, HttpServletResponse response, User user) {
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public Object index(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		User user_table = userService.findUserByUserName(user.getUserName());
 		if (user_table != null) {

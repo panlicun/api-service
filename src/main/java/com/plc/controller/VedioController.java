@@ -124,6 +124,7 @@ public class VedioController {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		User user = (User)request.getSession().getAttribute("user");
 		List<Vedio> vedioList = vedioService.findTop20ByPlayTimes();
+        vedioService.test();
 		if (null != vedioList && !vedioList.isEmpty()) {
 			errMsg.setData(vedioList);
 			return errMsg;
