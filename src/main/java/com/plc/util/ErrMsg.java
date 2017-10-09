@@ -52,10 +52,6 @@ public class ErrMsg {
     public static final String PUSH_DELETE_STRING = "推送消息删除失败";
     public static final int   PUSH_UPDATE = 603;
     public static final String PUSH_UPDATE_STRING = "推送消息更新失败";
-    public static final int   ACTIVITY_ENROLLMENT_FULL = 701;
-    public static final String ACTIVITY_ENROLLMENT_FULL_STRING = "活动报名人数已满";
-    public static final int   ACTIVITY_ENROLLMENT_EXCEED_FULL = 702;
-    public static final String ACTIVITY_ENROLLMENT_EXCEED_FULL_STRING = "您报名人数超出剩余名额";
 
     private int errCode;
     private boolean ok;
@@ -119,11 +115,7 @@ public class ErrMsg {
                 this.NewErrMsg(DISABLE_OPTION, false, DISABLE_OPTION_STRING); break;
             case PUSH_FAILURE:
                 this.NewErrMsg(PUSH_FAILURE, false, PUSH_FAILURE_STRING); break;
-            case ACTIVITY_ENROLLMENT_FULL:
-                this.NewErrMsg(ACTIVITY_ENROLLMENT_FULL, false, ACTIVITY_ENROLLMENT_FULL_STRING); break;
-            case ACTIVITY_ENROLLMENT_EXCEED_FULL:
-                this.NewErrMsg(ACTIVITY_ENROLLMENT_EXCEED_FULL, false, ACTIVITY_ENROLLMENT_EXCEED_FULL_STRING); break;
-            case PUSH_DELETE:
+           case PUSH_DELETE:
                 this.NewErrMsg(PUSH_DELETE, false, PUSH_DELETE_STRING); break;
             case PUSH_UPDATE:
                 this.NewErrMsg(PUSH_UPDATE, false, PUSH_UPDATE_STRING); break;
