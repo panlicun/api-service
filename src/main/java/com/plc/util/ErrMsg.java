@@ -22,8 +22,6 @@ public class ErrMsg {
     public static final String RECORD_NOT_EXIST_STRING = "记录不存在";
     public static final int    INPUT_DATA_FORMAT_EXCEPTION = 8;
     public static final String INPUT_DATA_FORMAT_EXCEPTION_STRING = "url参数错误";
-    public static final int    GOODS_OUT_OF_STOCK = 9;
-    public static final String GOODS_OUT_OF_STOCK_EXCEPTION = "商品库存不足";
     public static final int    POST_DATA_FORMAT_EXCEPTION = 100;
     public static final String POST_DATA_FORMAT_EXCEPTION_STRING = "上传数据格式错误";
     public static final int    SERVER_SEND_VERIFY_TOKEN_EXCEPTION = 101;
@@ -93,8 +91,6 @@ public class ErrMsg {
                 this.NewErrMsg(POST_DATA_FORMAT_EXCEPTION, false, POST_DATA_FORMAT_EXCEPTION_STRING); break;
             case INPUT_DATA_FORMAT_EXCEPTION:
                 this.NewErrMsg(INPUT_DATA_FORMAT_EXCEPTION, false, INPUT_DATA_FORMAT_EXCEPTION_STRING); break;
-            case GOODS_OUT_OF_STOCK:
-                this.NewErrMsg(GOODS_OUT_OF_STOCK, false, GOODS_OUT_OF_STOCK_EXCEPTION); break;
             case SERVER_SEND_VERIFY_TOKEN_EXCEPTION:
                 this.NewErrMsg(SERVER_SEND_VERIFY_TOKEN_EXCEPTION, false, SERVER_SEND_VERIFY_TOKEN_EXCEPTION_STRING); break;
             case SERVER_EXCEPTION:
