@@ -31,7 +31,6 @@ public class UserController {
 			String MD5Pwd = MD5Util.string2MD5(user.getPassWord());
 			if (user_table.getPassWord().equals(MD5Pwd)) {
 				request.getSession().setAttribute("user", user_table);
-				errMsg = new ErrMsg(ErrMsg.SUCCESS);
 				errMsg.setData(user_table);
 				return errMsg;
 			} else {
