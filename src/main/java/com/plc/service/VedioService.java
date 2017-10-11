@@ -15,11 +15,7 @@ public interface VedioService {
 
 	Page<Vedio> findAll(Pageable pageable);
 
-	Long countByVedioTypeId(Long vedioTypeId);
-	
-	Long count();
-
-	Vedio findOne(Long id);
+    Vedio findOne(Long id);
 
 	void delIdList(List<Long> idList);
 
@@ -28,8 +24,6 @@ public interface VedioService {
 	List<Vedio> findTop20ByPlayTimes();
 
 	Page<Vedio> findByVedioNameLike(String vedioName, Pageable pageable);
-
-	Long countByVedioNameLike(String vedioName);
 
 	void test();
 

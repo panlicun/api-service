@@ -36,16 +36,6 @@ public class VedioServiceImpl implements VedioService {
 	}
 
 	@Override
-	public Long countByVedioTypeId(Long vedioTypeId) {
-		return vedioRepository.countByVedioTypeId(vedioTypeId);
-	}
-
-	@Override
-	public Long count() {
-		return vedioRepository.count();
-	}
-
-	@Override
 	public Vedio findOne(Long id) {
 		return vedioRepository.findOne(id);
 	}
@@ -74,11 +64,6 @@ public class VedioServiceImpl implements VedioService {
 	@Override
 	public Page<Vedio> findByVedioNameLike(String vedioName,Pageable pageable){
 		return vedioRepository.findByVedioNameLike(vedioName,pageable);
-	}
-	
-	@Override
-	public Long countByVedioNameLike(String vedioName) {
-		return vedioRepository.countByVedioNameLike(vedioName);
 	}
 
     @Override

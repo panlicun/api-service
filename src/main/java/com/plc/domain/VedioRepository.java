@@ -11,13 +11,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface VedioRepository extends JpaRepository<Vedio, Long>{
 	Page<Vedio> findByVedioTypeId(Long vedioTypeId,Pageable pageable);
-	
-	Long countByVedioTypeId(Long vedioTypeId);
 
 	@Query(value = "select * from vedio order by play_times desc limit 20", nativeQuery = true)
 	List<Vedio> findTop20ByPlayTimes();
 	
 	Page<Vedio> findByVedioNameLike(String vedioName,Pageable pageable);
-	
-	Long countByVedioNameLike(String vedioName);
+
 }

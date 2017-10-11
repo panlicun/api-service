@@ -1,6 +1,5 @@
 package com.plc.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +23,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public Object index(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
+	public Object index(HttpServletRequest request, HttpServletResponse response, User user) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		User user_table = userService.findUserByUserName(user.getUserName());
 		if (user_table != null) {
@@ -43,35 +42,12 @@ public class UserController {
 		}
 	}
 
-	/* 判断session是否有值 */
 	@ResponseBody
-	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-	public Object checkLogin(HttpServletRequest request, HttpServletResponse response) {
-		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
-		User user = (User) request.getSession().getAttribute("user");
-		if (null != user) {
-			errMsg.setData(user);
-			return errMsg;
-		} else {
-			errMsg = new ErrMsg(ErrMsg.USER_NOT_EXIST);
-			return errMsg;
-		}
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/goOut", method = RequestMethod.POST)
+	@RequestMapping(value = "goOut", method = RequestMethod.POST)
 	public Object goOut(HttpServletRequest request, HttpServletResponse response) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		// 清楚session
 		request.getSession().invalidate();
-		// 清楚cookie
-		Cookie[] cookies = request.getCookies();
-
-		for (Cookie cookie : cookies) {
-			cookie.setMaxAge(0);
-			cookie.setPath("/");
-			response.addCookie(cookie);
-		}
 		return errMsg;
 	}
 }

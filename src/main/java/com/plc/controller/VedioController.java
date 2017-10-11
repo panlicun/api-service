@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.plc.util.Util;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,7 +55,6 @@ public class VedioController {
 	@ResponseBody
 	@RequestMapping(value = "/pageVedio", method = RequestMethod.POST)
 	public Object pageVedio(HttpServletRequest request, HttpServletResponse response, PageVo pageVo) {
-		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		Sort sort = new Sort(Direction.DESC, "id");
 		Pageable pageable = new PageRequest(pageVo.getPageId() - 1, pageVo.getPageSize(), sort);
 		Page pageVedio = null;
@@ -63,7 +63,7 @@ public class VedioController {
 		} else {
 			pageVedio = vedioService.findByVedioTypeId(pageVo.getVedioTypeId(), pageable);
 		}
-		return pageVedio;
+		return Util.gageToErrMsg(pageVedio);
 	}
 
 	@ResponseBody
@@ -124,7 +124,7 @@ public class VedioController {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		User user = (User)request.getSession().getAttribute("user");
 		List<Vedio> vedioList = vedioService.findTop20ByPlayTimes();
-        vedioService.test();
+//        vedioService.test();
 		if (null != vedioList && !vedioList.isEmpty()) {
 			errMsg.setData(vedioList);
 			return errMsg;
