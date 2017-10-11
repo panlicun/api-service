@@ -67,20 +67,6 @@ public class VedioController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/countByVedioTypeId", method = RequestMethod.POST)
-	public Object countByVedioTypeId(HttpServletRequest request, HttpServletResponse response, Long vedioTypeId) {
-		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
-		Long count = 0L;
-		if (vedioTypeId == 0) {
-			count = vedioService.count();
-		} else {
-			count = vedioService.countByVedioTypeId(vedioTypeId);
-		}
-		errMsg.setData(count);
-		return errMsg;
-	}
-
-	@ResponseBody
 	@RequestMapping(value = "/findOne", method = RequestMethod.POST)
 	public Object findOne(HttpServletRequest request, HttpServletResponse response, Long id) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
@@ -142,15 +128,5 @@ public class VedioController {
 		Pageable pageable = new PageRequest(pageVo.getPageId() - 1, pageVo.getPageSize(), sort);
 		Page pageVedio = vedioService.findByVedioNameLike("%"+pageVo.getVedioName()+"%", pageable);
 		return pageVedio;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/countByVedioNameLike", method = RequestMethod.POST)
-	public Object countByVedioNameLike(HttpServletRequest request, HttpServletResponse response, String vedioName) {
-		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
-		Long count = 0L;
-		count = vedioService.countByVedioNameLike("%"+vedioName+"%");
-		errMsg.setData(count);
-		return errMsg;
 	}
 }

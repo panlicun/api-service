@@ -16,8 +16,8 @@ import org.springframework.core.annotation.Order;
 
 import com.plc.model.User;
 
-@Order(2)//数越小，越提前执行
-@WebFilter(filterName = "crossDomainFilter", urlPatterns = "/*")
+//@Order(1)//数越小，越提前执行
+//@WebFilter(filterName = "crossDomainFilter", urlPatterns = "/*")
 public class CrossDomainFilter implements Filter {
 	@Override
 	public void destroy() {

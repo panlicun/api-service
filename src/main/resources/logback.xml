@@ -1,7 +1,7 @@
 <!-- Logback configuration. See http://logback.qos.ch/manual/index.html -->
 <configuration scan="true" scanPeriod="10 seconds">
     <include resource="org/springframework/boot/logging/logback/base.xml" />
-	<property name="LOG_PATH" value="f:/myweb_log" />  
+	<property name="LOG_PATH" value="f:/api_service_log" />
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${LOG_PATH}/info.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -36,7 +36,13 @@
             </Pattern>
         </layout>
     </appender>
-    
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger - %msg%n</pattern>
+            <!--<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>-->
+        </encoder>
+    </appender>
+
     <!-- hibernate日志输入 -->
     <!-- <logger name="org.hibernate.type.descriptor.sql.BasicBinder"
         level="TRACE" />
@@ -49,6 +55,7 @@
     <root level="INFO">
         <appender-ref ref="INFO_FILE" />
         <appender-ref ref="ERROR_FILE" />
+        <appender-ref ref="console" />
     </root>
     
 </configuration>

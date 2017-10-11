@@ -1,5 +1,6 @@
 package com.plc.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,8 +43,23 @@ public class UserController {
 		}
 	}
 
+	/* 判断session是否有值 */
 	@ResponseBody
-	@RequestMapping(value = "goOut", method = RequestMethod.POST)
+	@RequestMapping(value = "checkAuthority")
+	public Object checkLogin(HttpServletRequest request, HttpServletResponse response) {
+		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
+		User user = (User) request.getSession().getAttribute("user");
+		if (null != user) {
+			errMsg.setData(user);
+			return errMsg;
+		} else {
+			errMsg = new ErrMsg(ErrMsg.USER_NOT_EXIST);
+			return errMsg;
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/goOut", method = RequestMethod.POST)
 	public Object goOut(HttpServletRequest request, HttpServletResponse response) {
 		ErrMsg errMsg = new ErrMsg(ErrMsg.SUCCESS);
 		// 清楚session
