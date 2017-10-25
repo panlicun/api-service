@@ -1,6 +1,6 @@
 package com.plc;
 
-import com.plc.filter.AccessFilter;
+import com.plc.authority.AccessFilter;
 import com.plc.filter.CrossDomainFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

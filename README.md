@@ -16,3 +16,7 @@ crossDomain: true,  --Ajax跨域请求保证同一个session
 @ServletComponentScan
 但是用注解的方式，order排序不能用，如果对排序有要求，不能用注解的方式<br />
 
+###权限验证
+1、前端通过请求获取页面跳转路径
+2、只验证页面跳转接口数据查询接口不做权限验证
+

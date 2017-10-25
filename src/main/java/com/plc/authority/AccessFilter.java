@@ -1,6 +1,8 @@
-package com.plc.filter;
+package com.plc.authority;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -35,12 +37,15 @@ public class AccessFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) srequest;
 		HttpServletResponse response = (HttpServletResponse) sresponse;
 		String path = request.getRequestURI();
-		if (path.indexOf("/user/checkAuthority") > -1) {
-			filterChain.doFilter(srequest, sresponse);
-			return;
-		}
         log.info("filter check authority,url : " + path);
-        request.getRequestDispatcher("/user/checkAuthority").forward(request, response);
+        //要验证的页面
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("/test/**","");
+        //验证权限
+        if(true){//如果没有权限
+            response.sendError(403);
+            return;
+        }
 		filterChain.doFilter(srequest, sresponse);
 	}
 
